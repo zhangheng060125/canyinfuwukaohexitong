@@ -19,13 +19,11 @@ test("培训专员 → 文件留痕与考核 → 管理指令 → 整改复核 �
     .first()
     .click();
   await page.getByLabel("资料分类").selectOption("签到表");
-  await page
-    .locator("input[type=file]")
-    .setInputFiles({
-      name: "浏览器签到测试.csv",
-      mimeType: "text/csv",
-      buffer: Buffer.from("姓名,签到\n李淑芬,已到场"),
-    });
+  await page.locator("input[type=file]").setInputFiles({
+    name: "浏览器签到测试.csv",
+    mimeType: "text/csv",
+    buffer: Buffer.from("姓名,签到\n李淑芬,已到场"),
+  });
   await expect(page.locator(".selected-files")).toContainText(
     "浏览器签到测试.csv",
   );
@@ -110,7 +108,9 @@ test("培训专员 → 文件留痕与考核 → 管理指令 → 整改复核 �
     .fill("开始针对性训练。");
   await page.getByLabel("同时更新执行状态").selectOption("in_progress");
   await page.getByRole("button", { name: "开始执行", exact: true }).click();
-  await expect(page.locator(".comment-body").last()).toContainText("开始针对性训练。");
+  await expect(page.locator(".comment-body").last()).toContainText(
+    "开始针对性训练。",
+  );
   await page
     .getByPlaceholder("具体说明已完成的训练、观察到的改变，或管理层意见…")
     .fill("现场观察已主动加水，申请复核。");
@@ -146,6 +146,9 @@ test("培训专员 → 文件留痕与考核 → 管理指令 → 整改复核 �
   // Bootstrap is explicit; a real workspace starts empty instead of importing demo records.
   await page.getByRole("button", { name: "进入正式工作区" }).click();
   const pass = randomBytes(16).toString("hex");
+  await page
+    .getByLabel("网站初始化密钥 *")
+    .fill("browser-test-initialization-only");
   await page.getByLabel("管理员姓名 *").fill("验收管理员");
   await page.getByLabel("登录账号 *").fill("qa.owner");
   await page.getByLabel("密码 *", { exact: false }).fill(pass);
@@ -191,42 +194,89 @@ test("手机端所有业务页面可访问，无页面横向溢出", async ({ pa
   await expect(page.locator(".sidebar.mobile-open")).toHaveCount(0);
 });
 
-test('照片、视频和 PDF 可真实上传、预览与下载',async({page})=>{
- await page.goto('/');await expect(page.locator('.hero')).toBeVisible();
- const image=await page.locator('.hero').screenshot();
- const video=await page.evaluate(async()=>{
-  const canvas=document.createElement('canvas');canvas.width=160;canvas.height=90;
-  const ctx=canvas.getContext('2d')!;ctx.fillStyle='#286349';ctx.fillRect(0,0,160,90);
-  const stream=canvas.captureStream(10);
-  const recorder=new MediaRecorder(stream,{mimeType:'video/webm'});
-  const chunks:Blob[]=[];
-  const finished=new Promise<Blob>(resolve=>{recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=()=>resolve(new Blob(chunks,{type:'video/webm'}))});
-  recorder.start();let frame=0;
-  const timer=setInterval(()=>{ctx.fillStyle=frame++%2?'#286349':'#799c6a';ctx.fillRect(0,0,160,90)},80);
-  await new Promise(resolve=>setTimeout(resolve,700));recorder.stop();clearInterval(timer);
-  const blob=await finished;stream.getTracks().forEach(t=>t.stop());return Array.from(new Uint8Array(await blob.arrayBuffer()));
- });
- const pdf=await page.pdf({format:'A4',printBackground:true});
- const assets=[{name:'验收照片.png',mime:'image/png',body:image},{name:'验收视频.webm',mime:'video/webm',body:Buffer.from(video)},{name:'验收汇报.pdf',mime:'application/pdf',body:pdf}];
- for(const f of assets){
-  const response=await page.request.post('/api/files',{multipart:{file:{name:f.name,mimeType:f.mime,buffer:f.body}}});
-  expect(response.ok()).toBeTruthy();const uploaded=await response.json();
-  const original=await page.request.get(`/api/files/${uploaded.id}?download=true`);
-  expect(Buffer.compare(await original.body(),f.body)).toEqual(0);
- }
- await page.reload();
- await page.getByRole('navigation',{name:'主导航'}).getByRole('button',{name:'资料与留痕'}).click();
- await page.getByRole('button',{name:/验收照片.png/}).click();
- await expect(page.getByRole('dialog').getByRole('img',{name:'验收照片.png',exact:true})).toBeVisible();
- expect(await page.getByRole('dialog').getByRole('img',{name:'验收照片.png',exact:true}).evaluate((el:HTMLImageElement)=>el.naturalWidth)).toBeGreaterThan(0);
- await page.getByRole('button',{name:'关闭',exact:true}).click();
- await page.getByRole('button',{name:/验收视频.webm/}).click();
- await expect.poll(()=>page.locator('video').evaluate((el:HTMLVideoElement)=>el.readyState)).toBeGreaterThanOrEqual(1);
- await page.locator('video').evaluate((el:HTMLVideoElement)=>el.play());
- await expect.poll(()=>page.locator('video').evaluate((el:HTMLVideoElement)=>el.currentTime)).toBeGreaterThan(0);
- await page.getByRole('button',{name:'关闭',exact:true}).click();
- await page.getByRole('button',{name:/验收汇报.pdf/}).click();
- await expect(page.locator('iframe')).toBeVisible();
- const pdfUrl=await page.locator('iframe').getAttribute('src');const headers=(await page.request.get(pdfUrl!)).headers();
- expect(headers['content-type']).toContain('application/pdf');expect(headers['x-frame-options']).toEqual('SAMEORIGIN');
+test("照片、视频和 PDF 可真实上传、预览与下载", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".hero")).toBeVisible();
+  const image = await page.locator(".hero").screenshot();
+  const video = await page.evaluate(async () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 160;
+    canvas.height = 90;
+    const ctx = canvas.getContext("2d")!;
+    ctx.fillStyle = "#286349";
+    ctx.fillRect(0, 0, 160, 90);
+    const stream = canvas.captureStream(10);
+    const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+    const chunks: Blob[] = [];
+    const finished = new Promise<Blob>((resolve) => {
+      recorder.ondataavailable = (e) => chunks.push(e.data);
+      recorder.onstop = () => resolve(new Blob(chunks, { type: "video/webm" }));
+    });
+    recorder.start();
+    let frame = 0;
+    const timer = setInterval(() => {
+      ctx.fillStyle = frame++ % 2 ? "#286349" : "#799c6a";
+      ctx.fillRect(0, 0, 160, 90);
+    }, 80);
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    recorder.stop();
+    clearInterval(timer);
+    const blob = await finished;
+    stream.getTracks().forEach((t) => t.stop());
+    return Array.from(new Uint8Array(await blob.arrayBuffer()));
+  });
+  const pdf = await page.pdf({ format: "A4", printBackground: true });
+  const assets = [
+    { name: "验收照片.png", mime: "image/png", body: image },
+    { name: "验收视频.webm", mime: "video/webm", body: Buffer.from(video) },
+    { name: "验收汇报.pdf", mime: "application/pdf", body: pdf },
+  ];
+  for (const f of assets) {
+    const response = await page.request.post("/api/files", {
+      multipart: { file: { name: f.name, mimeType: f.mime, buffer: f.body } },
+    });
+    expect(response.ok()).toBeTruthy();
+    const uploaded = await response.json();
+    const original = await page.request.get(
+      `/api/files/${uploaded.id}?download=true`,
+    );
+    expect(Buffer.compare(await original.body(), f.body)).toEqual(0);
+  }
+  await page.reload();
+  await page
+    .getByRole("navigation", { name: "主导航" })
+    .getByRole("button", { name: "资料与留痕" })
+    .click();
+  await page.getByRole("button", { name: /验收照片.png/ }).click();
+  await expect(
+    page
+      .getByRole("dialog")
+      .getByRole("img", { name: "验收照片.png", exact: true }),
+  ).toBeVisible();
+  expect(
+    await page
+      .getByRole("dialog")
+      .getByRole("img", { name: "验收照片.png", exact: true })
+      .evaluate((el: HTMLImageElement) => el.naturalWidth),
+  ).toBeGreaterThan(0);
+  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  await page.getByRole("button", { name: /验收视频.webm/ }).click();
+  await expect
+    .poll(() =>
+      page.locator("video").evaluate((el: HTMLVideoElement) => el.readyState),
+    )
+    .toBeGreaterThanOrEqual(1);
+  await page.locator("video").evaluate((el: HTMLVideoElement) => el.play());
+  await expect
+    .poll(() =>
+      page.locator("video").evaluate((el: HTMLVideoElement) => el.currentTime),
+    )
+    .toBeGreaterThan(0);
+  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  await page.getByRole("button", { name: /验收汇报.pdf/ }).click();
+  await expect(page.locator("iframe")).toBeVisible();
+  const pdfUrl = await page.locator("iframe").getAttribute("src");
+  const headers = (await page.request.get(pdfUrl!)).headers();
+  expect(headers["content-type"]).toContain("application/pdf");
+  expect(headers["x-frame-options"]).toEqual("SAMEORIGIN");
 });

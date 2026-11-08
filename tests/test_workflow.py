@@ -4,11 +4,15 @@ import io
 import os
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import timedelta
 from pathlib import Path
 
 TEST_DATA = tempfile.TemporaryDirectory(prefix='baihuali-test-')
 os.environ['BAIHUALI_DATA_DIR'] = TEST_DATA.name
+# Deployment secrets must never configure isolated test users.
+os.environ.pop('BAIHUALI_SETUP_KEY', None)
+os.environ.pop('BAIHUALI_REQUIRE_SETUP_KEY', None)
 from fastapi.testclient import TestClient
 from backend.app import app, today
 
@@ -50,6 +54,16 @@ class WorkflowTest(unittest.TestCase):
         body={'employee_id':eid,'assessed_on':str(today()),'scores':{'table':20,'hygiene':20,'service':20,'observation':30,'oral':10},'notes':'跨租户测试'}
         self.assertEqual(self.demo.post('/api/assessments',json=body).status_code,404)
         self.assertEqual(self.trainer.post('/api/auth/demo',json={'role':'trainer'},headers={'Origin':'https://evil.example'}).status_code,403)
+
+    def test_public_bootstrap_protection(self):
+        client=TestClient(app)
+        body={'username':'new-owner','password':'Test-unique-pass-2026','name':'测试'}
+        with patch.dict(os.environ, {'BAIHUALI_REQUIRE_SETUP_KEY':'1','BAIHUALI_SETUP_KEY':''}):
+            self.assertEqual(client.post('/api/auth/bootstrap',json=body).status_code,503)
+        with patch.dict(os.environ, {'BAIHUALI_SETUP_KEY':'test-bootstrap-secret-only'}):
+            self.assertEqual(client.post('/api/auth/bootstrap',json=body).status_code,403)
+            self.assertNotIn('test-bootstrap-secret-only',client.get('/api/auth/status').text)
+            self.assertEqual(client.post('/api/auth/bootstrap',json={**body,'setup_key':'test-bootstrap-secret-only'}).status_code,409)
 
     def test_score_rules_and_immutable_history(self):
         eid=self.employee()

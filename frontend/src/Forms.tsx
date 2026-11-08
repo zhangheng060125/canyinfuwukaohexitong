@@ -1011,45 +1011,45 @@ export function DirectiveDetail({
         }}
       >
         <fieldset disabled={busy} className="form-fieldset">
-        <h3 className="detail-heading">
-          {d.status === "closed" ? "补充意见" : "添加反馈 / 处理意见"}
-        </h3>
-        <textarea
-          required
-          rows={3}
-          maxLength={4000}
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          placeholder="具体说明已完成的训练、观察到的改变，或管理层意见…"
-        />
-        {options.length > 0 && (
-          <Field label="同时更新执行状态">
-            <select
-              value={transition}
-              onChange={(e) => setTransition(e.target.value)}
-            >
-              <option value="">仅记录意见，不变更状态</option>
-              {options.map(([v, t]) => (
-                <option key={v} value={v}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </Field>
-        )}
-        <UploadPicker
-          value={evidence}
-          onChange={setEvidence}
-          category="整改证据"
-        />
-        <Actions
-          busy={busy}
-          label={
-            transition
-              ? options.find(([v]) => v === transition)?.[1]
-              : "提交反馈"
-          }
-        />
+          <h3 className="detail-heading">
+            {d.status === "closed" ? "补充意见" : "添加反馈 / 处理意见"}
+          </h3>
+          <textarea
+            required
+            rows={3}
+            maxLength={4000}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            placeholder="具体说明已完成的训练、观察到的改变，或管理层意见…"
+          />
+          {options.length > 0 && (
+            <Field label="同时更新执行状态">
+              <select
+                value={transition}
+                onChange={(e) => setTransition(e.target.value)}
+              >
+                <option value="">仅记录意见，不变更状态</option>
+                {options.map(([v, t]) => (
+                  <option key={v} value={v}>
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </Field>
+          )}
+          <UploadPicker
+            value={evidence}
+            onChange={setEvidence}
+            category="整改证据"
+          />
+          <Actions
+            busy={busy}
+            label={
+              transition
+                ? options.find(([v]) => v === transition)?.[1]
+                : "提交反馈"
+            }
+          />
         </fieldset>
       </form>
     </>
@@ -1585,11 +1585,20 @@ export function ComplaintDetail({ record: initial }: { record: Complaint }) {
 export function LoginForm() {
   const { setUser, refresh, toast, close } = useApp();
   const [initialized, setInitialized] = useState<boolean | null>(null);
-  const [form, setForm] = useState({ username: "", password: "", name: "" });
+  const [setupRequired, setSetupRequired] = useState(false);
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    name: "",
+    setup_key: "",
+  });
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     api("/auth/status")
-      .then((s) => setInitialized(s.initialized))
+      .then((s) => {
+        setInitialized(s.initialized);
+        setSetupRequired(s.setup_key_required);
+      })
       .catch((e) => toast(e.message, true));
   }, []);
   if (initialized === null)
@@ -1631,6 +1640,21 @@ export function LoginForm() {
             : "先创建首位管理员，再为培训专员和经理分配独立账号。正式数据与演示数据完全隔离。"}
         </p>
       </div>
+      {!initialized && setupRequired && (
+        <Field
+          label="网站初始化密钥 *"
+          hint="网站所有者从托管平台环境设置中获取 BAIHUALI_SETUP_KEY，仅首次创建管理员需要。"
+        >
+          <input
+            required
+            type="password"
+            maxLength={256}
+            autoComplete="off"
+            value={form.setup_key}
+            onChange={(e) => setForm({ ...form, setup_key: e.target.value })}
+          />
+        </Field>
+      )}
       {!initialized && (
         <Field label="管理员姓名 *">
           <input

@@ -197,6 +197,7 @@ class Credentials(BaseModel):
     password: str = Field(min_length=10,max_length=128)
     name: str = Field(default='',max_length=40)
     role: str = 'trainer'
+    setup_key: str = Field(default='', max_length=256)
 
 
 class Demo(BaseModel):
@@ -207,11 +208,13 @@ class Demo(BaseModel):
 def auth_status(request: Request):
     with db() as c:
         initialized = bool(c.execute('SELECT 1 FROM users').fetchone())
+    key_required = bool(os.environ.get('BAIHUALI_SETUP_KEY')) or os.environ.get('BAIHUALI_REQUIRE_SETUP_KEY') == '1'
+    result = {'initialized':initialized, 'setup_key_required':not initialized and key_required}
     try:
         u = current(request)
-        return {'initialized':initialized,'user':{k:u[k] for k in ('name','role','tenant')}}
+        return {**result,'user':{k:u[k] for k in ('name','role','tenant')}}
     except HTTPException:
-        return {'initialized':initialized,'user':None}
+        return {**result,'user':None}
 
 
 @app.post('/api/auth/demo')
@@ -223,6 +226,11 @@ def demo(body: Demo, response: Response):
 
 @app.post('/api/auth/bootstrap')
 def bootstrap(body: Credentials, response: Response):
+    expected_key = os.environ.get('BAIHUALI_SETUP_KEY', '')
+    if os.environ.get('BAIHUALI_REQUIRE_SETUP_KEY') == '1' and not expected_key:
+        raise HTTPException(503,'网站初始化尚未配置，请管理员在托管平台设置初始化密钥')
+    if expected_key and not hmac.compare_digest(body.setup_key.encode(), expected_key.encode()):
+        raise HTTPException(403,'初始化密钥不正确，请从网站托管平台的环境设置中获取')
     if not body.name.strip():
         raise HTTPException(422,'请填写姓名')
     with db() as c:
