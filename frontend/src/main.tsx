@@ -1,3 +1,5 @@
+import { TRIAL, sourceHref } from "./mode";
+import { TrialInfo } from "./trial/Info";
 import React, { useCallback, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -106,6 +108,7 @@ const TITLES: Record<string, string> = {
   complaint: "客诉与突发情况登记",
   complaintDetail: "客诉处理记录",
   login: "正式工作区",
+  trialInfo: "浏览器试用说明",
   accounts: "账号与角色管理",
   search: "搜索工作区",
   notifications: "待办与提醒",
@@ -193,7 +196,11 @@ function App() {
     setModal(null);
   };
   const open = (m: ModalSpec) => {
-    setModal(m);
+    setModal(
+      TRIAL && ["login", "accounts"].includes(m.type)
+        ? { type: "trialInfo" }
+        : m,
+    );
     setDropdown(false);
   };
   const close = () => setModal(null);
@@ -254,6 +261,8 @@ function App() {
     if (!modal) return null;
     const p = modal.data;
     switch (modal.type) {
+      case "trialInfo":
+        return <TrialInfo />;
       case "employee":
         return <EmployeeForm />;
       case "assessment":
@@ -373,7 +382,11 @@ function App() {
                 </div>
               </div>
             ))}
-            <a className="btn" href="/api/source">
+            <a
+              className="btn"
+              href={sourceHref}
+              download={TRIAL ? "百花里餐饮部员工培训计划书.docx" : undefined}
+            >
               <DownloadIcon />
               下载原计划书
             </a>
@@ -563,9 +576,11 @@ function App() {
                         )}
                       <button onClick={() => open({ type: "login" })}>
                         <LogIn size={15} />
-                        {user.tenant === "demo"
-                          ? "登录 / 创建正式工作区"
-                          : "切换登录账号"}
+                        {TRIAL
+                          ? "试用说明 / 重置数据"
+                          : user.tenant === "demo"
+                            ? "登录 / 创建正式工作区"
+                            : "切换登录账号"}
                       </button>
                       {user.tenant === "live" && (
                         <button
@@ -589,14 +604,18 @@ function App() {
           {user.tenant === "demo" && (
             <div className="demo-bar">
               <span>
-                <span className="demo-dot" /> 演示工作区 <i>·</i>
+                <span className="demo-dot" />{" "}
+                {TRIAL ? "本机试用" : "演示工作区"} <i>·</i>
                 <span className="demo-detail">
                   {" "}
-                  当前员工与成绩均为示例，正式数据独立保存
+                  {TRIAL
+                    ? "数据仅存当前浏览器 · 不同设备不共享 · 请使用测试资料"
+                    : "当前员工与成绩均为示例，正式数据独立保存"}
                 </span>
               </span>
               <button onClick={() => open({ type: "login" })}>
-                进入正式工作区 <ArrowUpRight size={13} />
+                {TRIAL ? "试用说明" : "进入正式工作区"}{" "}
+                <ArrowUpRight size={13} />
               </button>
             </div>
           )}

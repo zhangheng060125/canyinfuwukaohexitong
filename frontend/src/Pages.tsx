@@ -1,3 +1,4 @@
+import { TRIAL, sourceHref, assetUrl, reportHref } from "./mode";
 import { useState } from "react";
 import {
   Plus,
@@ -472,7 +473,11 @@ export function StandardsPage() {
         title="课程标准库"
         subtitle="每一个检查点，都来自《百花里餐饮部员工培训计划书》。"
         actions={
-          <a className="btn" href="/api/source">
+          <a
+            className="btn"
+            href={sourceHref}
+            download={TRIAL ? "百花里餐饮部员工培训计划书.docx" : undefined}
+          >
             <Download size={16} />
             下载原计划书
           </a>
@@ -676,11 +681,7 @@ export function Library() {
                   }
                 >
                   {f.mime.startsWith("image/") ? (
-                    <img
-                      src={"/api/files/" + f.id}
-                      alt={f.name}
-                      loading="lazy"
-                    />
+                    <img src={assetUrl(f.id)} alt={f.name} loading="lazy" />
                   ) : (
                     <FileIcon file={f} size={37} />
                   )}
@@ -1105,7 +1106,10 @@ export function Reports() {
             </button>
             <a
               className="btn primary"
-              href={`/api/reports/export?start=${start}&end=${end}`}
+              href={reportHref(data, start, end)}
+              download={
+                TRIAL ? `baihuali-assessments-${start}-${end}.csv` : undefined
+              }
             >
               <Download size={16} />
               导出考核明细
@@ -1346,17 +1350,29 @@ export function Settings() {
       <div className="settings-grid">
         <section className="panel settings-card">
           <span className="eyebrow">CURRENT WORKSPACE</span>
-          <h2>{user.tenant === "demo" ? "演示工作区" : "正式工作区"}</h2>
+          <h2>
+            {TRIAL
+              ? "个人浏览器试用"
+              : user.tenant === "demo"
+                ? "演示工作区"
+                : "正式工作区"}
+          </h2>
           <p>
-            {user.tenant === "demo"
-              ? "当前所有员工、评分与记录均为演示数据，与正式工作区完全隔离。"
-              : "记录保存到服务端数据库，附件保存在服务端文件目录，多个账号共享同一工作区。"}
+            {TRIAL
+              ? "当前为免费个人试用版。评分和文件保存在此浏览器，刷新后可继续；其他设备无法共享，清理网站数据后会丢失。请使用测试资料。"
+              : user.tenant === "demo"
+                ? "当前所有员工、评分与记录均为演示数据，与正式工作区完全隔离。"
+                : "记录保存到服务端数据库，附件保存在服务端文件目录，多个账号共享同一工作区。"}
           </p>
           <button
             className="btn primary"
             onClick={() => open({ type: "login" })}
           >
-            {user.tenant === "demo" ? "创建 / 登录正式工作区" : "切换登录账号"}
+            {TRIAL
+              ? "试用说明 / 重置数据"
+              : user.tenant === "demo"
+                ? "创建 / 登录正式工作区"
+                : "切换登录账号"}
             <ArrowRight size={16} />
           </button>
         </section>

@@ -1,4 +1,14 @@
-import { useEffect, useRef, useState, useId, cloneElement, isValidElement, type ReactElement, type ReactNode } from "react";
+import { assetUrl } from "./mode";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useId,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import {
   X,
   UploadCloud,
@@ -173,11 +183,13 @@ export function Field({
   hint?: string;
   full?: boolean;
 }) {
-  const id=useId();
+  const id = useId();
   return (
     <label className={"field " + (full ? "full" : "")}>
       <span id={id}>{label}</span>
-      {isValidElement(children) ? cloneElement(children as ReactElement<any>, {"aria-labelledby":id}) : children}
+      {isValidElement(children)
+        ? cloneElement(children as ReactElement<any>, { "aria-labelledby": id })
+        : children}
       {hint && <small>{hint}</small>}
     </label>
   );
@@ -403,11 +415,11 @@ export function FilePreview({ file }: { file: Asset }) {
   return (
     <div className="file-preview">
       {file.mime.startsWith("image/") ? (
-        <img src={"/api/files/" + file.id} alt={file.name} />
+        <img src={assetUrl(file.id)} alt={file.name} />
       ) : file.mime.startsWith("video/") ? (
-        <video src={"/api/files/" + file.id} controls preload="metadata" />
+        <video src={assetUrl(file.id)} controls preload="metadata" />
       ) : file.mime === "application/pdf" ? (
-        <iframe src={"/api/files/" + file.id} title={file.name} />
+        <iframe src={assetUrl(file.id)} title={file.name} />
       ) : (
         <div className="document-placeholder">
           <FileIcon file={file} size={50} />
@@ -420,7 +432,8 @@ export function FilePreview({ file }: { file: Asset }) {
           {fileSize(file.size)} · {file.uploader} 上传
         </span>
         <a
-          href={"/api/files/" + file.id + "?download=true"}
+          href={assetUrl(file.id, true)}
+          download={file.name}
           className="btn primary"
         >
           <Download size={16} /> 下载文件

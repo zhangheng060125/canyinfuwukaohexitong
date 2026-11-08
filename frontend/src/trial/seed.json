@@ -1,0 +1,1063 @@
+{
+  "data": {
+    "employees": [
+      {
+        "id": 4,
+        "name": "周明",
+        "position": "餐饮经理",
+        "group_name": "前厅管理",
+        "joined": "2026-09-04",
+        "active": 1
+      },
+      {
+        "id": 3,
+        "name": "林小满",
+        "position": "服务员",
+        "group_name": "前厅 A 组",
+        "joined": "2026-09-04",
+        "active": 1
+      },
+      {
+        "id": 2,
+        "name": "陈惠芳",
+        "position": "服务员",
+        "group_name": "前厅 A 组",
+        "joined": "2026-09-04",
+        "active": 1
+      },
+      {
+        "id": 1,
+        "name": "李淑芬",
+        "position": "服务员",
+        "group_name": "前厅 A 组",
+        "joined": "2026-09-04",
+        "active": 1
+      }
+    ],
+    "assessments": [
+      {
+        "id": 28,
+        "employee_id": 4,
+        "assessed_on": "2026-11-08",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 28
+        },
+        "total": 92.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-08T15:00:00+08:00"
+      },
+      {
+        "id": 27,
+        "employee_id": 3,
+        "assessed_on": "2026-11-08",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 30
+        },
+        "total": 94.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-08T15:00:00+08:00"
+      },
+      {
+        "id": 26,
+        "employee_id": 2,
+        "assessed_on": "2026-11-08",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 20
+        },
+        "total": 84.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-08T15:00:00+08:00"
+      },
+      {
+        "id": 25,
+        "employee_id": 1,
+        "assessed_on": "2026-11-08",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 23
+        },
+        "total": 76.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-08T15:00:00+08:00"
+      },
+      {
+        "id": 24,
+        "employee_id": 4,
+        "assessed_on": "2026-11-07",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 27
+        },
+        "total": 91.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-07T15:00:00+08:00"
+      },
+      {
+        "id": 23,
+        "employee_id": 3,
+        "assessed_on": "2026-11-07",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 29
+        },
+        "total": 93.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-07T15:00:00+08:00"
+      },
+      {
+        "id": 22,
+        "employee_id": 2,
+        "assessed_on": "2026-11-07",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 19
+        },
+        "total": 83.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-07T15:00:00+08:00"
+      },
+      {
+        "id": 21,
+        "employee_id": 1,
+        "assessed_on": "2026-11-07",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 22
+        },
+        "total": 75.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-07T15:00:00+08:00"
+      },
+      {
+        "id": 20,
+        "employee_id": 4,
+        "assessed_on": "2026-11-06",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 24
+        },
+        "total": 88.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-06T15:00:00+08:00"
+      },
+      {
+        "id": 19,
+        "employee_id": 3,
+        "assessed_on": "2026-11-06",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 26
+        },
+        "total": 90.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-06T15:00:00+08:00"
+      },
+      {
+        "id": 18,
+        "employee_id": 2,
+        "assessed_on": "2026-11-06",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 16
+        },
+        "total": 80.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-06T15:00:00+08:00"
+      },
+      {
+        "id": 17,
+        "employee_id": 1,
+        "assessed_on": "2026-11-06",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 19
+        },
+        "total": 72.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-06T15:00:00+08:00"
+      },
+      {
+        "id": 16,
+        "employee_id": 4,
+        "assessed_on": "2026-11-05",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 23
+        },
+        "total": 87.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-05T15:00:00+08:00"
+      },
+      {
+        "id": 15,
+        "employee_id": 3,
+        "assessed_on": "2026-11-05",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 25
+        },
+        "total": 89.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-05T15:00:00+08:00"
+      },
+      {
+        "id": 14,
+        "employee_id": 2,
+        "assessed_on": "2026-11-05",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 15
+        },
+        "total": 79.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-05T15:00:00+08:00"
+      },
+      {
+        "id": 13,
+        "employee_id": 1,
+        "assessed_on": "2026-11-05",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 18
+        },
+        "total": 71.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-05T15:00:00+08:00"
+      },
+      {
+        "id": 12,
+        "employee_id": 4,
+        "assessed_on": "2026-11-04",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 20
+        },
+        "total": 84.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-04T15:00:00+08:00"
+      },
+      {
+        "id": 11,
+        "employee_id": 3,
+        "assessed_on": "2026-11-04",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 22
+        },
+        "total": 86.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-04T15:00:00+08:00"
+      },
+      {
+        "id": 10,
+        "employee_id": 2,
+        "assessed_on": "2026-11-04",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 12
+        },
+        "total": 76.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-04T15:00:00+08:00"
+      },
+      {
+        "id": 9,
+        "employee_id": 1,
+        "assessed_on": "2026-11-04",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 15
+        },
+        "total": 68.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-04T15:00:00+08:00"
+      },
+      {
+        "id": 8,
+        "employee_id": 4,
+        "assessed_on": "2026-11-03",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 19
+        },
+        "total": 83.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-03T15:00:00+08:00"
+      },
+      {
+        "id": 7,
+        "employee_id": 3,
+        "assessed_on": "2026-11-03",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 21
+        },
+        "total": 85.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-03T15:00:00+08:00"
+      },
+      {
+        "id": 6,
+        "employee_id": 2,
+        "assessed_on": "2026-11-03",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 11
+        },
+        "total": 75.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-03T15:00:00+08:00"
+      },
+      {
+        "id": 5,
+        "employee_id": 1,
+        "assessed_on": "2026-11-03",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 14
+        },
+        "total": 67.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-03T15:00:00+08:00"
+      },
+      {
+        "id": 4,
+        "employee_id": 4,
+        "assessed_on": "2026-11-02",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 16
+        },
+        "total": 80.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "餐前四查到位，带教时注意一次只纠正一个动作。",
+        "evidence": [],
+        "duration": 249,
+        "redlines": [],
+        "created": "2026-11-02T15:00:00+08:00"
+      },
+      {
+        "id": 3,
+        "employee_id": 3,
+        "assessed_on": "2026-11-02",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 18
+        },
+        "total": 82.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "迎宾主动、服务流程完整，能准确复述客诉四步。",
+        "evidence": [],
+        "duration": 232,
+        "redlines": [],
+        "created": "2026-11-02T15:00:00+08:00"
+      },
+      {
+        "id": 2,
+        "employee_id": 2,
+        "assessed_on": "2026-11-02",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 18,
+          "hygiene": 19,
+          "service": 18,
+          "oral": 9,
+          "observation": 8
+        },
+        "total": 72.0,
+        "checks": {
+          "service:3": "pass"
+        },
+        "notes": "整体流程熟练，客诉方案需明确具体处理时间。",
+        "evidence": [],
+        "duration": 215,
+        "redlines": [],
+        "created": "2026-11-02T15:00:00+08:00"
+      },
+      {
+        "id": 1,
+        "employee_id": 1,
+        "assessed_on": "2026-11-02",
+        "course": "all",
+        "assessor": "许知夏",
+        "scores": {
+          "table": 16,
+          "hygiene": 15,
+          "service": 14,
+          "oral": 8,
+          "observation": 11
+        },
+        "total": 64.0,
+        "checks": {
+          "service:3": "improve"
+        },
+        "notes": "巡台频次不足，杯中余水不足三分之一时未主动加水；需针对巡台动作二次培训。",
+        "evidence": [],
+        "duration": 198,
+        "redlines": [],
+        "created": "2026-11-02T15:00:00+08:00"
+      }
+    ],
+    "trainings": [
+      {
+        "id": 5,
+        "title": "客诉与突发情况 · 实操带教",
+        "course": "complaint",
+        "scheduled_on": "2026-11-08",
+        "time": "14:30",
+        "minutes": 30,
+        "method": "示范 → 学员实操 → 单动作纠正",
+        "attendees": [1, 2, 3, 4],
+        "present": [2, 3, 4],
+        "issues": "按检查点完成示范与实操；演示记录未附真实证据。",
+        "evidence": [],
+        "status": "completed",
+        "creator": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 4,
+        "title": "服务流程与态度 · 实操带教",
+        "course": "service",
+        "scheduled_on": "2026-11-07",
+        "time": "14:30",
+        "minutes": 30,
+        "method": "示范 → 学员实操 → 单动作纠正",
+        "attendees": [1, 2, 3, 4],
+        "present": [1, 2, 3, 4],
+        "issues": "巡台三看需要持续巩固。",
+        "evidence": [],
+        "status": "completed",
+        "creator": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 3,
+        "title": "餐前准备 · 实操带教",
+        "course": "preparation",
+        "scheduled_on": "2026-11-06",
+        "time": "14:30",
+        "minutes": 30,
+        "method": "示范 → 学员实操 → 单动作纠正",
+        "attendees": [1, 2, 3, 4],
+        "present": [1, 2, 3, 4],
+        "issues": "按检查点完成示范与实操；演示记录未附真实证据。",
+        "evidence": [],
+        "status": "completed",
+        "creator": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 2,
+        "title": "仪容仪表与上班姿态 · 实操带教",
+        "course": "appearance",
+        "scheduled_on": "2026-11-05",
+        "time": "14:30",
+        "minutes": 30,
+        "method": "示范 → 学员实操 → 单动作纠正",
+        "attendees": [1, 2, 3, 4],
+        "present": [1, 2, 3, 4],
+        "issues": "按检查点完成示范与实操；演示记录未附真实证据。",
+        "evidence": [],
+        "status": "completed",
+        "creator": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 1,
+        "title": "卫生与食品安全 · 实操带教",
+        "course": "hygiene",
+        "scheduled_on": "2026-11-04",
+        "time": "14:30",
+        "minutes": 60,
+        "method": "示范 → 学员实操 → 单动作纠正",
+        "attendees": [1, 2, 3, 4],
+        "present": [1, 2, 3, 4],
+        "issues": "按检查点完成示范与实操；演示记录未附真实证据。",
+        "evidence": [],
+        "status": "completed",
+        "creator": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      }
+    ],
+    "files": [],
+    "directives": [
+      {
+        "id": 3,
+        "employee_id": null,
+        "title": "统一餐前检查留痕",
+        "detail": "餐前 15 分钟完成四查；上传签到表、实操照片及问题清单。",
+        "due": "2026-11-11",
+        "priority": "normal",
+        "status": "open",
+        "author": "沈总",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 2,
+        "employee_id": 2,
+        "title": "补充客诉处理时间承诺",
+        "detail": "模拟菜品偏凉的客诉：方案必须包含具体动作与时间，按四步完整演练。",
+        "due": "2026-11-10",
+        "priority": "normal",
+        "status": "in_progress",
+        "author": "沈总",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 1,
+        "employee_id": 1,
+        "title": "加强巡台与主动加水训练",
+        "detail": "针对李淑芬安排一次巡台三看示范，跟岗观察杯子、骨碟、台面，次日提交训练结果。",
+        "due": "2026-11-09",
+        "priority": "high",
+        "status": "open",
+        "author": "沈总",
+        "created": "2026-11-08T18:19:10+08:00"
+      }
+    ],
+    "comments": [],
+    "followups": [
+      {
+        "id": 4,
+        "employee_id": 4,
+        "recorded_on": "2026-11-08",
+        "encouragement": "今天主动迎宾的动作有进步。",
+        "correction": "继续练习巡台三看，一次只纠正一个动作。",
+        "evidence": [],
+        "author": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 3,
+        "employee_id": 3,
+        "recorded_on": "2026-11-08",
+        "encouragement": "今天主动迎宾的动作有进步。",
+        "correction": "继续练习巡台三看，一次只纠正一个动作。",
+        "evidence": [],
+        "author": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 2,
+        "employee_id": 2,
+        "recorded_on": "2026-11-08",
+        "encouragement": "今天主动迎宾的动作有进步。",
+        "correction": "继续练习巡台三看，一次只纠正一个动作。",
+        "evidence": [],
+        "author": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      },
+      {
+        "id": 1,
+        "employee_id": 1,
+        "recorded_on": "2026-11-08",
+        "encouragement": "今天主动迎宾的动作有进步。",
+        "correction": "继续练习巡台三看，一次只纠正一个动作。",
+        "evidence": [],
+        "author": "许知夏",
+        "created": "2026-11-08T18:19:10+08:00"
+      }
+    ],
+    "complaints": [],
+    "audit": [],
+    "today": "2026-11-08"
+  },
+  "standards": {
+    "courses": [
+      {
+        "id": "hygiene",
+        "name": "卫生与食品安全",
+        "day": 1,
+        "minutes": 60,
+        "goal": "抽查通过",
+        "method": "每天两次白手套抽查；摸餐具内壁、检查杯口指纹，结果可计数。",
+        "items": [
+          [
+            "手部",
+            "三个“手不”：不碰餐具入口端、不插口袋、不摸头发和脸",
+            "白手套摸餐具内壁"
+          ],
+          [
+            "抹布",
+            "分色分区：台面、地面、餐具各一块，不混用",
+            "现场检查颜色与分区"
+          ],
+          [
+            "餐具",
+            "一刷二洗三冲四消毒五保洁；消毒后不裸手取用",
+            "抽查杯口指纹"
+          ],
+          ["个人", "晨检、健康自检，不带病上岗；上完厕所规范洗手", "每天询问"],
+          ["环境", "垃圾不落地、地面积水立即擦、传菜口不堆杂物", "巡台观察"]
+        ],
+        "redline": "不带病上岗"
+      },
+      {
+        "id": "appearance",
+        "name": "仪容仪表与上班姿态",
+        "day": 2,
+        "minutes": 30,
+        "goal": "班前互检零扣分",
+        "method": "班前互检、伸手互检、站一排互检，现场观察上班姿态。",
+        "items": [
+          ["头发", "不遮眉、不盖耳、长发盘起加发网", "班前互检"],
+          ["手部", "指甲不超 1 毫米、不涂色、不戴戒指（婚戒除外）", "伸手互检"],
+          ["工服", "平整无褶皱、扣子扣齐、不露出项链", "站一排互检"],
+          ["鞋袜", "深色鞋袜；黑色、深蓝色或深棕色袜子", "互检"],
+          [
+            "站姿",
+            "双脚与肩同宽、手自然下垂并交叠腹前，左手在上；不倚墙、抱臂、托腮",
+            "现场观察；重点纠正倚墙、靠台、单腿承重"
+          ],
+          ["走姿", "步幅约 60 厘米、客区不奔跑，遇客侧身", "现场观察"],
+          ["手势", "五指并拢指示方向，不用单指指人指物", "动作演示"],
+          ["托盘", "不超过肩部、重物靠身体、不越客头", "实操演示"],
+          [
+            "眼神",
+            "与客人说话时看对方眉心，不看地、看手机或做其他事情",
+            "日常工作观察"
+          ]
+        ]
+      },
+      {
+        "id": "preparation",
+        "name": "餐前准备",
+        "day": 3,
+        "minutes": 30,
+        "goal": "开餐前定格检查",
+        "method": "开餐前 15 分钟定格检查；摆台计时，使用一指节、两指宽等工具化方法。",
+        "items": [
+          [
+            "餐前四查",
+            "检查台面、餐具、设备、环境，缺一项不算准备好",
+            "开餐前 15 分钟检查"
+          ],
+          [
+            "餐厅摆台",
+            "按餐厅摆台 SOP 执行，不靠目测，用手指量",
+            "实物演示与摆台计时；具体尺寸和计时达标值待补充 SOP"
+          ],
+          [
+            "零点台",
+            "四人台与双人台按当日桌型配比摆；加椅补餐具不挪位，先确定动线流畅",
+            "现场定格检查"
+          ],
+          ["餐前会", "讲清昨日问题、了解今日变化，三分钟讲完", "现场观察"],
+          [
+            "推荐菜",
+            "所有餐饮员工了解推荐菜，客人询问特色菜时有话可说",
+            "现场口述"
+          ]
+        ],
+        "missing": "原计划引用《餐厅摆台 SOP》，附件未提供；不预设具体尺寸、摆台时限或扣分细则。"
+      },
+      {
+        "id": "service",
+        "name": "服务流程与态度",
+        "day": 4,
+        "minutes": 30,
+        "goal": "日常工作观察通过",
+        "method": "服务流程演练与日常观察；巡台每 15 分钟一轮。六字口诀：抬头、看杯、先答应。",
+        "items": [
+          [
+            "迎宾",
+            "客人进厅 3 秒内抬头、点头、问候、引位",
+            "现场观察或情景演练"
+          ],
+          ["点单", "复述确认、问忌口、告知预计时间", "情景演练"],
+          ["上菜", "报菜名、从客人右侧上、不越肩、不越客头", "实操观察"],
+          [
+            "巡台",
+            "每 15 分钟一轮，看杯子、骨碟、台面；不等客人叫",
+            "日常观察"
+          ],
+          ["加水换碟", "杯子剩三分之一就加；骨碟有骨渣就换", "现场观察"],
+          ["结账", "唱收唱付、当面点清、双手递还", "情景演练"],
+          ["送客", "提醒携带随身物品、送至门口、说一句送客语", "现场观察"],
+          [
+            "主动回应",
+            "任何请求先答“好，我马上来”，不说“等一下”",
+            "日常观察；口述六字口诀"
+          ]
+        ]
+      },
+      {
+        "id": "complaint",
+        "name": "客诉与突发情况",
+        "day": 5,
+        "minutes": 30,
+        "goal": "四步走完、话术不越界",
+        "method": "四步情景演练与口述；按权限处理并上报留痕。",
+        "items": [
+          ["第一步 · 听完", "不打断、不辩解、身体前倾", "客诉情景演练"],
+          [
+            "第二步 · 复述",
+            "例如：您的意思是这道菜凉了，我理解对吗",
+            "口述与情景演练"
+          ],
+          [
+            "第三步 · 给方案",
+            "给出具体动作和时间，不给“马上就好”等空承诺",
+            "情景演练"
+          ],
+          [
+            "第四步 · 上报留痕",
+            "记入客诉登记表，超过权限立即上报",
+            "检查登记记录"
+          ],
+          [
+            "突发卫生事件",
+            "对呕吐、餐区换尿布、餐区解手等行为及时劝阻并在餐后消毒",
+            "情景演练；记录处理动作，不上传客人现场影像"
+          ],
+          [
+            "处理权限",
+            "服务员可赠果盘、免一道菜、重新做一份；超过 50 元必须经理批准",
+            "口述权限、检查上报记录"
+          ],
+          [
+            "突发事件纪律",
+            "突发时不围观、不拍照、不发朋友圈",
+            "当面讲清并口述确认"
+          ]
+        ],
+        "redline": "突发时不围观、不拍照、不发朋友圈"
+      }
+    ],
+    "parts": [
+      {
+        "key": "table",
+        "name": "摆台计时",
+        "max": 20,
+        "group": "实操",
+        "hint": "记录实际用时，按餐厅 SOP 人工评价；原文未设时限。"
+      },
+      {
+        "key": "hygiene",
+        "name": "卫生抽查",
+        "max": 20,
+        "group": "实操",
+        "hint": "白手套摸内壁、查杯口指纹；每日两次。"
+      },
+      {
+        "key": "service",
+        "name": "服务流程演练",
+        "max": 20,
+        "group": "实操",
+        "hint": "按七个服务动作进行演练与评价。"
+      },
+      {
+        "key": "observation",
+        "name": "现场观察",
+        "max": 30,
+        "group": "现场观察",
+        "hint": "每天观察教学内容吸收与落实程度。"
+      },
+      {
+        "key": "oral",
+        "name": "口述",
+        "max": 10,
+        "group": "口述",
+        "hint": "能说出抬头、看杯、先答应，以及客诉四步。"
+      }
+    ],
+    "policies": {
+      "pass_score": 80,
+      "assessment": "不设笔试；合格线 80 分。不设淘汰，未达标进行二次培训。各检查点的具体扣分细则未在原文规定，由考核人依据现场表现人工评分并记录原因。",
+      "teaching": [
+        "示范先于讲解：先说怎么做，再亲手做一遍，最后让学员做一遍。",
+        "只纠一个动作：年长服务员一次只改一到两个动作。",
+        "用图不用字：摆台标准拍成照片贴在备餐间，卫生标准做成图示。"
+      ],
+      "discipline": [
+        "不迟到、不无故请假、不缺席考核。",
+        "培训安排在非高峰，不在营业时段抽人；临时接待时顺延，不边看台边听课。",
+        "每次留存签到表、实操照片、当次问题清单；根据培训效果调整教法。"
+      ],
+      "followup": "考核通过后两周跟岗，每天进行鼓励与纠正；未达标者二次培训后重新考核。"
+    }
+  }
+}

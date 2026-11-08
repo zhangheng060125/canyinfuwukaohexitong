@@ -1,10 +1,14 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-export default defineConfig({
-  plugins: [react()],
-  server: { proxy: { "/api": "http://127.0.0.1:8000" } },
-  build: {
-    outDir: "dist",
-    rollupOptions: { output: { manualChunks: { charts: ["recharts"] } } },
-  },
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, ".", "VITE_");
+  return {
+    base: env.VITE_BASE_PATH || "/",
+    plugins: [react()],
+    server: { proxy: { "/api": "http://127.0.0.1:8000" } },
+    build: {
+      outDir: env.VITE_TRIAL_MODE === "1" ? "trial-dist" : "dist",
+      rollupOptions: { output: { manualChunks: { charts: ["recharts"] } } },
+    },
+  };
 });

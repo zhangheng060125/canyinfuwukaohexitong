@@ -1,7 +1,9 @@
+import { TRIAL } from "./mode";
 export async function api<T = any>(
   path: string,
   options: RequestInit = {},
 ): Promise<T> {
+  if (TRIAL) return (await import("./trial/api")).trialRequest(path, options);
   const response = await fetch("/api" + path, {
     ...options,
     headers: {
